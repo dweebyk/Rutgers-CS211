@@ -1,0 +1,16 @@
+./mystery 0
+./mystery 1
+./mystery 2
+./mystery 3
+./mystery 4
+./mystery 5
+./mystery 6
+./mystery 7
+./mystery 8
+./mystery 9
+./mystery 10
+./mystery 20
+./mystery 21
+./mystery 22
+./mystery 40
+./mystery 100
