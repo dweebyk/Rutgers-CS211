@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{booktabs}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+
+\begin{document}
+
+\title{Fancy Digital Logic Notes in \LaTeX{}}
+\author{Adeeb Kabir}
+
+\maketitle
+
+\begin{abstract}This document will detail notes on digital logic taken at Rutgers New Brunswick CS211 (Computer Architecture) with Brian Russell.
+
+\end{abstract}
+
+\section{Transistors}
+Transistors are semiconductive devices that amplify and switch electronic devices.
+
+They are:
+\begin{tabbing}
+	\tab{1.\ used in electrical switches without moving parts}\\
+
+	\tab{2.\ embedded into integrated circuits.}\\
+
+	\tab{As such, they are the building blocks of computers.}
+\end{tabbing}
+
+An aside from Professor Russell: `Superconductors change resistance when cooled, but semiconductors change resistance when heated.'\\
+
+
+\subsection{MOS (Metal Oxide Semiconductors)}
+
+These generally have four terminals:
+
+\begin{tabbing}
+	\tab{Source: from which current flows}\\
+
+	\tab{Drain: towards where the current flows}\\
+
+	\tab{Gate:  has 0 or positive voltage}\\
+
+	\tab{Body: substrate (underlying material)}
+\end{tabbing}
+
+
+While not on the exam, this might be extra credit.  This is more electrical engineering.
+
+\section{Logic Gates}
+We use these to facilitate boolean logic in circuits.\
+Gates include AND, NAND, OR, NOR, NOT, etc.
+
+\begin{tabbing}
+	\tab{ABC = $A\wedge B\wedge C$   (Note: $\wedge$ means `AND')}\\
+
+	\tab{A + B + C = $A\vee B\vee C$   (Note: $\vee$ means `OR')}\\
+
+	\tab{$\overline{A}$ = $\neg A$ = NOT A}
+\end{tabbing}
+
+For \textit{n} inputs, build a truth table with $2^{n}$ lines to account for all input possibilities.
+
+AND looks sort of like multiplication.  This makes sense, if you look at the inputs:
+\begin{tabbing}
+	\tab{1 AND 1 is like 1(1) = 1}\\
+	\tab{1 AND 0 is like 0(1) = 0}\\
+	\tab{0 AND 0 is like 0(0) = 0}
+\end{tabbing}
+
+OR looks sort of like addition.  Sorta.
+\begin{tabbing}
+	\tab{1 OR 1 is like 1 + 1 = 1 (on OR on must certainly mean on)}\\
+	\tab{1 OR 0 is like 1 + 0 = 1 }\\
+	\tab{0 OR 0 is like 0 + 0 = 0 }
+\end{tabbing}
+
+We combine logic gates into full circuits.  We can test them with truth tables.  Let's look at an example.  
+
+We're given a circuit's outputs given its inputs.  We can model its behavior as such:
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		\multicolumn{2}{c}{Input} & Output \\
+		\midrule
+		0 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 1 \\
+		\bottomrule
+	\end{tabular}
+
+	\bigskip
+	\bigskip
+	\bigskip
+
+	\begin{tabular}{ccccc}
+		\toprule
+		\multicolumn{5}{c}{A Given Truth Table}\\
+		\cmidrule{1-5}
+		A & B & C & \[ F_{1}\] & \[ F_{2}\] \\
+		\midrule
+		0 & 0 & 0 & 1 & 1 \\
+		0 & 0 & 1 & 1 & 1 \\
+		0 & 1 & 0 & 0 & 1 \\
+		0 & 1 & 1 & 1 & 0 \\
+		1 & 0 & 0 & 0 & 1 \\
+		1 & 0 & 1 & 0 & 1 \\
+		1 & 1 & 0 & 0 & 0 \\
+		1 & 1 & 1 & 1 & 0 \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+Due to this table, we can say \[ F_{1} = \bar{A} \bar{B} \bar{C} + \bar{A} \bar{B} C + ABC \]
+This is called a \textbf{Sum of Expressions} form.
+
+\subsection{Algebraic rules for logical expressions}
+\begin{center}
+
+	\bigskip
+
+	\begin{tabular}{lll}
+		\toprule
+		Rule & Form in Summation & Form in Multiplication\\
+		\midrule
+		Commutative & $w + y = y + w$  & $wy = yw$ \\
+		Associative & $(w + y) + z = w + (y + z)$ & $w(yz) = (wy)z$ \\
+		Distributive & $w + yz = (w + y)(y + z)$ & $w(y + z) = (wy + wz)$ \\
+		Indempotent & $w + w = w$ & $ww = w$ \\
+		Involution & $\overline{\overline{w}} = w$\\
+		Complement & $w + \overline{w} = 1$ & $w \overline{w} = 0$\\
+		\bottomrule
+	\end{tabular}
+
+	\bigskip
+	\bigskip
+	\bigskip
+
+	\begin{tabular}{ll}
+		\toprule
+		Identities\\
+		\midrule
+		$1 + w = 1$ & $0w = 0$\\
+		$0 + w = w$ & $1w = w$\\
+		$w + \overline{w} y = w + y$\\
+		\bottomrule
+	\end{tabular}
+
+	\bigskip
+
+\end{center}
+
+\section{Conclusion}
+Using this sort of understanding of circuits as logic gates, and thus logical expressions, we can simplify complex circuits into equivalent ones using logical rules.\\
+
+Thaaaaat being said, this is still more an electrical engineering endeavor.
+
+\end{document}
+
